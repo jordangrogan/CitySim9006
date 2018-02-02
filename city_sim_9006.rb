@@ -3,11 +3,11 @@ class Driver
 	@currentLocation = nil
 	@name = nil
 
-	def initialize name
+	def initialize(name)
 		@name = name
 	end
 
-	def setCurrentLocation currentLocation
+	def setCurrentLocation(currentLocation)
 		@currentLocation = currentLocation
 	end
 
@@ -27,7 +27,7 @@ class Street
 	@location1 = nil
 	@location2 = nil
 
-	def initialize name, location1, location2
+	def initialize(name, location1, location2)
 		@name = name
 		@location1 = location1
 		@location2 = location2
@@ -37,7 +37,7 @@ class Street
 		@name
 	end
 
-	def toLocation fromLocation
+	def toLocation(fromLocation)
 		if fromLocation == @location1
 			@location2
 		elsif fromLocation == @location2 # Two-Way Streets
@@ -54,7 +54,7 @@ class Avenue
 	@location2 = nil
 	@location3 = nil
 
-	def initialize name, location1, location2, location3
+	def initialize(name, location1, location2, location3)
 		@name = name
 		@location1 = location1
 		@location2 = location2
@@ -65,7 +65,7 @@ class Avenue
 		@name
 	end
 
-	def toLocation fromLocation
+	def toLocation(fromLocation)
 		if fromLocation == @location1
 			@location2
 		elsif fromLocation == @location2
@@ -80,7 +80,7 @@ class Location
 	@name = nil
 	@roads = nil # Roads able to travel
 
-	def initialize name
+	def initialize(name)
 		@name = name
 		@roads = []
 	end
