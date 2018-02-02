@@ -1,127 +1,127 @@
 class Driver
 
-	def initialize(name)
-		@name = name
-		@currentLocation = nil
-		@books = 0
-		@dinos = 0
-		@classes = 1
-	end
+  def initialize(name)
+    @name = name
+    @currentLocation = nil
+    @books = 0
+    @dinos = 0
+    @classes = 1
+  end
 
-	def name
-		@name
-	end
+  def name
+    @name
+  end
 
-	def currentLocation
-		@currentLocation
-	end
+  def currentLocation
+    @currentLocation
+  end
 
-	def currentLocation=(currentLocation)
-		@currentLocation = currentLocation
-	end
+  def currentLocation=(currentLocation)
+    @currentLocation = currentLocation
+  end
 
-	def add_book
-		@books += 1
-	end
+  def add_book
+    @books += 1
+  end
 
-	def add_dino
-		@dinos += 1
-	end
+  def add_dino
+    @dinos += 1
+  end
 
-	def add_class
-		@classes *= 2
-	end
+  def add_class
+    @classes *= 2
+  end
 
-	def books
-		@books
-	end
+  def books
+    @books
+  end
 
-	def dinos
-		@dinos
-	end
+  def dinos
+    @dinos
+  end
 
-	def classes
-		@classes
-	end
+  def classes
+    @classes
+  end
 
 end
 
 class Street
 
-	def initialize(name, location1, location2)
-		@name = name
-		@location1 = location1
-		@location2 = location2
-	end
+  def initialize(name, location1, location2)
+    @name = name
+    @location1 = location1
+    @location2 = location2
+  end
 
-	def name
-		@name
-	end
+  def name
+    @name
+  end
 
-	def toLocation(fromLocation)
-		if fromLocation == @location1
-			@location2
-		elsif fromLocation == @location2 # Two-Way Streets
-			@location1
-		end
-	end
+  def toLocation(fromLocation)
+    if fromLocation == @location1
+      @location2
+    elsif fromLocation == @location2 # Two-Way Streets
+      @location1
+    end
+  end
 
 end
 
 class Avenue
 
-	def initialize(name, location1, location2, location3)
-		@name = name
-		@location1 = location1
-		@location2 = location2
-		@location3 = location3
-	end
+  def initialize(name, location1, location2, location3)
+    @name = name
+    @location1 = location1
+    @location2 = location2
+    @location3 = location3
+  end
 
-	def name
-		@name
-	end
+  def name
+    @name
+  end
 
-	def toLocation(fromLocation)
-		if fromLocation == @location1
-			@location2
-		elsif fromLocation == @location2
-			@location3
-		end
-	end
+  def toLocation(fromLocation)
+    if fromLocation == @location1
+      @location2
+    elsif fromLocation == @location2
+      @location3
+    end
+  end
 
 end
 
 class Location
 
-	def initialize(name)
-		@name = name
-		@roads = []
-	end
+  def initialize(name)
+    @name = name
+    @roads = []
+  end
 
-	def add_roads(*rds)
-		rds.each { |r| @roads << r }
-	end
+  def add_roads(*rds)
+    rds.each { |r| @roads << r }
+  end
 
-	def roads
-		@roads
-	end
+  def roads
+    @roads
+  end
 
-	def name
-		@name
-	end
+  def name
+    @name
+  end
 
 end
 
 def pluralize(object, num)
-	if num == 1
-		return object
-	else
-		if object[-1] == "s"
-			return object + "es"
-		else
-			return object + "s"
-		end
-	end
+  if num == 1
+    return object
+  else
+    if object[-1] == "s" # object[-1] returns last character of string
+      return object + "es"
+    else
+      return object + "s"
+    end
+  end
 end
 
 
@@ -154,33 +154,33 @@ museum.add_roads(bar, fifth)
 
 drivers = []
 for i in 0..4 do
-	drivers[i] = Driver::new("Driver " + (i+1).to_s)
+  drivers[i] = Driver::new("Driver " + (i+1).to_s)
 end
 
 drivers.each_with_index do |driver, i|
 
-	nextLocation = nil
-	currentLocation = driver.currentLocation=(starting_locations.sample(random: prng))
+  nextLocation = nil
+  currentLocation = driver.currentLocation=(starting_locations.sample(random: prng))
 
-	until (nextLocation == monroeville) || (nextLocation == downtown)
+  until (nextLocation == monroeville) || (nextLocation == downtown)
 
-		if currentLocation == hillman
-			driver.add_book
-		elsif currentLocation == museum
-			driver.add_dino
-		elsif currentLocation == cathedral
-			driver.add_class
-		end
+    if currentLocation == hillman
+      driver.add_book
+    elsif currentLocation == museum
+      driver.add_dino
+    elsif currentLocation == cathedral
+      driver.add_class
+    end
 
-		nextRoad = currentLocation.roads.sample(random: prng)
-		nextLocation = nextRoad.toLocation(currentLocation)
-		puts "Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name
-		currentLocation = nextLocation
+    nextRoad = currentLocation.roads.sample(random: prng)
+    nextLocation = nextRoad.toLocation(currentLocation)
+    puts "Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name
+    currentLocation = nextLocation
 
-	end
+  end
 
-	puts "Driver " + (i+1).to_s + " obtained " + driver.books.to_s + " " + pluralize("book",driver.books) + "!"
-	puts "Driver " + (i+1).to_s + " obtained " + driver.dinos.to_s + " " + pluralize("dinosaur toy",driver.dinos) + "!"
-	puts "Driver " + (i+1).to_s + " attended " + driver.classes.to_s + " " + pluralize("class",driver.classes) + "!"
+  puts "Driver " + (i+1).to_s + " obtained " + driver.books.to_s + " " + pluralize("book",driver.books) + "!"
+  puts "Driver " + (i+1).to_s + " obtained " + driver.dinos.to_s + " " + pluralize("dinosaur toy",driver.dinos) + "!"
+  puts "Driver " + (i+1).to_s + " attended " + driver.classes.to_s + " " + pluralize("class",driver.classes) + "!"
 
 end
