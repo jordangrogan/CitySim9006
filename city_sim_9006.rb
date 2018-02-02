@@ -155,7 +155,7 @@ drivers.each_with_index do |driver, i|
   nextLocation = nil
   currentLocation = starting_locations.sample(random: prng)
 
-  until (nextLocation == monroeville) || (nextLocation == downtown)
+  until (currentLocation == monroeville) || (currentLocation == downtown)
 
     if currentLocation == hillman
       driver.add_book
