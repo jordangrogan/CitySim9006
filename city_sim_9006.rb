@@ -1,10 +1,11 @@
 class Driver
 
-	@currentLocation = nil
-	@name = nil
-
 	def initialize(name)
 		@name = name
+		@books = 0
+		@dinos = 0
+		@classes = 1
+		@currentLocation = nil
 	end
 
 	def setCurrentLocation(currentLocation)
@@ -19,13 +20,33 @@ class Driver
 		@name
 	end
 
+	def add_book
+		@books += 1
+	end
+
+	def add_dino
+		@dinos += 1
+	end
+
+	def add_class
+		@classes *= 2
+	end
+
+	def books
+		@books
+	end
+
+	def dinos
+		@dinos
+	end
+
+	def classes
+		@classes
+	end
+
 end
 
 class Street
-
-	@name = nil
-	@location1 = nil
-	@location2 = nil
 
 	def initialize(name, location1, location2)
 		@name = name
@@ -48,11 +69,6 @@ class Street
 end
 
 class Avenue
-
-	@name = nil
-	@location1 = nil
-	@location2 = nil
-	@location3 = nil
 
 	def initialize(name, location1, location2, location3)
 		@name = name
@@ -77,9 +93,6 @@ end
 
 class Location
 
-	@name = nil
-	@roads = nil # Roads able to travel
-
 	def initialize(name)
 		@name = name
 		@roads = []
@@ -97,6 +110,18 @@ class Location
 		@name
 	end
 
+end
+
+def pluralize(object, num)
+	if num == 1
+		return object
+	else
+		if object[-1] == "s"
+			return object + "es"
+		else
+			return object + "s"
+		end
+	end
 end
 
 
@@ -138,10 +163,24 @@ drivers.each_with_index do |driver, i|
 	currentLocation = driver.setCurrentLocation(starting_locations.sample(random: prng))
 
 	until (nextLocation == monroeville) || (nextLocation == downtown)
+
+		if currentLocation == hillman
+			driver.add_book
+		elsif currentLocation == museum
+			driver.add_dino
+		elsif currentLocation == cathedral
+			driver.add_class
+		end
+
 		nextRoad = currentLocation.roads.sample(random: prng)
 		nextLocation = nextRoad.toLocation(currentLocation)
-		puts("Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name)
+		puts "Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name
 		currentLocation = nextLocation
+
 	end
+
+	puts "Driver " + (i+1).to_s + " obtained " + driver.books.to_s + " " + pluralize("book",driver.books) + "!"
+	puts "Driver " + (i+1).to_s + " obtained " + driver.dinos.to_s + " " + pluralize("dinosaur toy",driver.dinos) + "!"
+	puts "Driver " + (i+1).to_s + " attended " + driver.classes.to_s + " " + pluralize("class",driver.classes) + "!"
 
 end
