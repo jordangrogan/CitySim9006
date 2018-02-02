@@ -2,7 +2,6 @@ class Driver
 
   def initialize(name)
     @name = name
-    @currentLocation = nil
     @books = 0
     @dinos = 0
     @classes = 1
@@ -10,14 +9,6 @@ class Driver
 
   def name
     @name
-  end
-
-  def currentLocation
-    @currentLocation
-  end
-
-  def currentLocation=(currentLocation)
-    @currentLocation = currentLocation
   end
 
   def add_book
@@ -160,7 +151,7 @@ end
 drivers.each_with_index do |driver, i|
 
   nextLocation = nil
-  currentLocation = driver.currentLocation=(starting_locations.sample(random: prng))
+  currentLocation = starting_locations.sample(random: prng)
 
   until (nextLocation == monroeville) || (nextLocation == downtown)
 
