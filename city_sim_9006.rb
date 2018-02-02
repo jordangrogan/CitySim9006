@@ -40,7 +40,7 @@ class Street
 	def toLocation fromLocation
 		if fromLocation == @location1
 			@location2
-		elsif fromLocation == @location2
+		elsif fromLocation == @location2 # Two-Way Streets
 			@location1
 		end
 	end
@@ -102,6 +102,10 @@ end
 
 # EXECUTION STARTS HERE
 
+raise "Enter a seed and only a seed" unless ARGV.count == 1
+
+prng = Random.new(ARGV[0].to_i) # If it's a string, .to_i will default to 0
+
 # SETUP
 
 hospital = Location::new("Hospital")
@@ -131,10 +135,10 @@ end
 drivers.each_with_index do |driver, i|
 
 	nextLocation = nil
-	currentLocation = driver.setCurrentLocation(starting_locations.sample)
+	currentLocation = driver.setCurrentLocation(starting_locations.sample(random: prng))
 
 	until (nextLocation == monroeville) || (nextLocation == downtown)
-		nextRoad = currentLocation.roads.sample
+		nextRoad = currentLocation.roads.sample(random: prng)
 		nextLocation = nextRoad.toLocation(currentLocation)
 		puts("Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name)
 		currentLocation = nextLocation
