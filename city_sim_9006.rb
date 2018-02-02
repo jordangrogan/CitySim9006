@@ -122,7 +122,7 @@ raise "Enter a seed and only a seed" unless ARGV.count == 1
 
 prng = Random.new(ARGV[0].to_i) # If it's a string, .to_i will default to 0
 
-# SETUP
+# SETUP LOCATIONS & ROADS
 
 hospital = Location::new("Hospital")
 cathedral = Location::new("Cathedral")
@@ -142,6 +142,8 @@ hospital.add_roads(foo, fourth)
 cathedral.add_roads(bar, fourth)
 hillman.add_roads(foo, fifth)
 museum.add_roads(bar, fifth)
+
+# RUN SIMULATION
 
 drivers = []
 for i in 0..4 do
@@ -165,7 +167,9 @@ drivers.each_with_index do |driver, i|
 
     nextRoad = currentLocation.roads.sample(random: prng)
     nextLocation = nextRoad.toLocation(currentLocation)
+
     puts "Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name
+
     currentLocation = nextLocation
 
   end
