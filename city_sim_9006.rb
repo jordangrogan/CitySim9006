@@ -1,107 +1,7 @@
-class Driver
-
-  def initialize(name)
-    @name = name
-    @books = 0
-    @dinos = 0
-    @classes = 1
-  end
-
-  def name
-    @name
-  end
-
-  def add_book
-    @books += 1
-  end
-
-  def add_dino
-    @dinos += 1
-  end
-
-  def add_class
-    @classes *= 2
-  end
-
-  def books
-    @books
-  end
-
-  def dinos
-    @dinos
-  end
-
-  def classes
-    @classes
-  end
-
-end
-
-class Street
-
-  def initialize(name, location1, location2)
-    @name = name
-    @location1 = location1
-    @location2 = location2
-  end
-
-  def name
-    @name
-  end
-
-  def toLocation(fromLocation)
-    if fromLocation == @location1
-      @location2
-    elsif fromLocation == @location2 # Two-Way Streets
-      @location1
-    end
-  end
-
-end
-
-class Avenue
-
-  def initialize(name, location1, location2, location3)
-    @name = name
-    @location1 = location1
-    @location2 = location2
-    @location3 = location3
-  end
-
-  def name
-    @name
-  end
-
-  def toLocation(fromLocation)
-    if fromLocation == @location1
-      @location2
-    elsif fromLocation == @location2
-      @location3
-    end
-  end
-
-end
-
-class Location
-
-  def initialize(name)
-    @name = name
-    @roads = []
-  end
-
-  def add_roads(*rds)
-    rds.each { |r| @roads << r }
-  end
-
-  def roads
-    @roads
-  end
-
-  def name
-    @name
-  end
-
-end
+require_relative "driver.rb"
+require_relative "street.rb"
+require_relative "avenue.rb"
+require_relative "location.rb"
 
 def pluralize(object, num)
   if num == 1
@@ -114,7 +14,6 @@ def pluralize(object, num)
     end
   end
 end
-
 
 # EXECUTION STARTS HERE
 
