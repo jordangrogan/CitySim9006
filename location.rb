@@ -2,7 +2,7 @@ class Location
 
   def initialize(name)
     @name = name
-    @roads = []
+    @roads = [] # @roads are streets or avenues that this location can travel to
   end
 
   def add_roads(*rds)
