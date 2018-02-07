@@ -1,21 +1,8 @@
-require_relative "driver.rb"
-require_relative "street.rb"
-require_relative "avenue.rb"
-require_relative "location.rb"
-
-# The pluralize helper method takes in a singular string and
-#   adds the appropriate ending to make it plural
-def pluralize(singularStr, num)
-  if num == 1
-    return singularStr
-  else
-    if singularStr[-1] == "s" # singularStr[-1] returns last character of string
-      return "#{singularStr}es"
-    else
-      return "#{singularStr}s"
-    end
-  end
-end
+require_relative "driver"
+require_relative "street"
+require_relative "avenue"
+require_relative "location"
+require_relative "helper"
 
 # EXECUTION STARTS HERE
 
