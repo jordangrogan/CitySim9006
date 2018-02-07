@@ -3,16 +3,16 @@ require_relative "street.rb"
 require_relative "avenue.rb"
 require_relative "location.rb"
 
-# The pluralize helper method takes in a string and
+# The pluralize helper method takes in a singular string and
 #   adds the appropriate ending to make it plural
-def pluralize(str, num)
+def pluralize(singularStr, num)
   if num == 1
-    return str
+    return singularStr
   else
-    if str[-1] == "s" # object[-1] returns last character of string
-      return "#{str}es"
+    if singularStr[-1] == "s" # singularStr[-1] returns last character of string
+      return "#{singularStr}es"
     else
-      return "#{str}s"
+      return "#{singularStr}s"
     end
   end
 end
