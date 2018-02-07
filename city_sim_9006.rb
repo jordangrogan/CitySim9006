@@ -108,9 +108,9 @@ def pluralize(object, num)
     return object
   else
     if object[-1] == "s" # object[-1] returns last character of string
-      return object + "es"
+      return "#{object}es"
     else
-      return object + "s"
+      return "#{object}s"
     end
   end
 end
@@ -147,7 +147,7 @@ museum.add_roads(bar, fifth)
 
 drivers = []
 for i in 0..4 do
-  drivers[i] = Driver::new("Driver " + (i+1).to_s)
+  drivers[i] = Driver::new("Driver #{i + 1}")
 end
 
 drivers.each_with_index do |driver, i|
@@ -168,14 +168,14 @@ drivers.each_with_index do |driver, i|
     nextRoad = currentLocation.roads.sample(random: prng)
     nextLocation = nextRoad.toLocation(currentLocation)
 
-    puts "Driver " + (i+1).to_s + " heading from " + currentLocation.name + " to " + nextLocation.name + " via " + nextRoad.name
+    puts "Driver #{i + 1} heading from #{currentLocation.name} to #{nextLocation.name} via #{nextRoad.name}"
 
     currentLocation = nextLocation
 
   end
 
-  puts "Driver " + (i+1).to_s + " obtained " + driver.books.to_s + " " + pluralize("book",driver.books) + "!"
-  puts "Driver " + (i+1).to_s + " obtained " + driver.dinos.to_s + " " + pluralize("dinosaur toy",driver.dinos) + "!"
-  puts "Driver " + (i+1).to_s + " attended " + driver.classes.to_s + " " + pluralize("class",driver.classes) + "!"
+  puts "Driver #{i + 1} obtained #{driver.books} #{pluralize("book", driver.books)}!"
+  puts "Driver #{i + 1} obtained #{driver.dinos} #{pluralize("dinosaur toy", driver.dinos)}!"
+  puts "Driver #{i + 1} attended #{driver.classes} #{pluralize("class", driver.classes)}!"
 
 end
