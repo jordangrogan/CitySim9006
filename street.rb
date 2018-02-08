@@ -1,13 +1,11 @@
 class Street
 
+  attr_accessor :name
+
   def initialize(name, location1, location2)
     @name = name
     @location1 = location1
     @location2 = location2
-  end
-
-  def name
-    @name
   end
 
   def toLocation(fromLocation)

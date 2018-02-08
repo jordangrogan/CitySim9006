@@ -1,14 +1,12 @@
 class Driver
 
+  attr_accessor :name, :books, :dinos, :classes
+
   def initialize(name)
     @name = name
     @books = 0
     @dinos = 0
     @classes = 1
-  end
-
-  def name
-    @name
   end
 
   def add_book
@@ -21,18 +19,6 @@ class Driver
 
   def add_class
     @classes *= 2
-  end
-
-  def books
-    @books
-  end
-
-  def dinos
-    @dinos
-  end
-
-  def classes
-    @classes
   end
 
 end
