@@ -2,7 +2,6 @@ require_relative "driver"
 require_relative "street"
 require_relative "avenue"
 require_relative "location"
-require_relative "helper"
 
 # EXECUTION STARTS HERE
 
@@ -62,8 +61,6 @@ drivers.each_with_index do |driver, i|
 
   end
 
-  puts "Driver #{i + 1} obtained #{driver.books} #{pluralize("book", driver.books)}!"
-  puts "Driver #{i + 1} obtained #{driver.dinos} #{pluralize("dinosaur toy", driver.dinos)}!"
-  puts "Driver #{i + 1} attended #{driver.classes} #{pluralize("class", driver.classes)}!"
+  driver.print_results
 
 end

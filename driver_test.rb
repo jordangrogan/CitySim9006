@@ -36,4 +36,39 @@ class DriverTest < Minitest::Test
     assert_equal @d.classes, 4
   end
 
+  # UNIT TESTS FOR METHOD pluralize(singularStr, num)
+  # Equivalence classes:
+  # num = 0 && singularStr ends with s -> returns "#{singularStr}es"
+  # num = 0 && singularStr does not end with s -> returns "#{singularStr}s"
+  # num = 1 -> returns singularStr
+  # num = 2..INFINITY && singularStr ends with s -> returns "#{singularStr}es"
+  # num = 2..INFINITY && singularStr does not end with s -> returns "#{singularStr}s"
+
+  # num = 0 && singularStr ends with s -> returns "#{singularStr}es"
+  def test_pluralize_zero_ends_s
+    assert_equal "classes", @d.pluralize("class", 0)
+  end
+
+  # num = 0 && singularStr does not end with s -> returns "#{singularStr}s"
+  def test_pluralize_zero_not_ends_s
+    assert_equal "books", @d.pluralize("book", 0)
+  end
+
+  # num = 1 -> returns singularStr
+  def test_pluralize_one
+    assert_equal "book", @d.pluralize("book", 1)
+  end
+
+  # num = 2..INFINITY && singularStr ends with s -> returns "#{singularStr}es"
+  def test_pluralize_two_ends_s
+    assert_equal "classes", @d.pluralize("class", 2)
+  end
+
+  # num = 2..INFINITY && singularStr does not end with s -> returns "#{singularStr}s"
+  def test_pluralize_two_not_ends_s
+    assert_equal "books", @d.pluralize("book", 2)
+  end
+
+  # TODO: Add test for print_results
+
 end
