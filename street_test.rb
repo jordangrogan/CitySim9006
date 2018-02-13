@@ -17,7 +17,7 @@ class StreetTest < Minitest::Test
     assert_equal loc2, avenue.toLocation(loc1)
   end
 
-  # If location2 is given for input toLocation, location3 is returned
+  # If location2 is given for input toLocation, location1 is returned
   def test_loc2_to_loc1
     loc1 = Minitest::Mock.new("Location 1")
     loc2 = Minitest::Mock.new("Location 2")
