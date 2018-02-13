@@ -11,4 +11,8 @@ class Location
     rds.each { |r| @roads << r }
   end
 
+  def getNextRoad(prng)
+    @roads.sample(random: prng)
+  end
+
 end

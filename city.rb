@@ -52,7 +52,7 @@ class City
           driver.add_class
         end
 
-        nextRoad = currentLocation.roads.sample(random: prng)
+        nextRoad = currentLocation.getNextRoad(prng)
         nextLocation = nextRoad.toLocation(currentLocation)
 
         puts "Driver #{i + 1} heading from #{currentLocation.name} to #{nextLocation.name} via #{nextRoad.name}"
