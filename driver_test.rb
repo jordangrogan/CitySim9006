@@ -5,7 +5,7 @@ require_relative "driver"
 class DriverTest < Minitest::Test
 
   def setup
-    @d = Driver::new("Test Driver")
+    @d = Driver::new("Driver 1")
   end
 
   # UNIT TESTS FOR METHOD add_book
@@ -69,6 +69,13 @@ class DriverTest < Minitest::Test
     assert_equal "books", @d.pluralize("book", 2)
   end
 
-  # TODO: Add test for print_results
+  # UNIT TESTS FOR METHOD print_results
+  # There are no parameters, it does not make sense to partition it
+  def test_print_results
+    @d.books = 6
+    @d.dinos = 11
+    @d.classes = 4
+    assert_output("Driver 1 obtained 6 books!\nDriver 1 obtained 11 dinosaur toys!\nDriver 1 attended 4 classes!\n") { @d.print_results }
+  end
 
 end
