@@ -49,7 +49,7 @@ class City
         nextRoad = currentLocation.getNextRoad(prng)
         nextLocation = nextRoad.toLocation(currentLocation)
 
-        puts "Driver #{i + 1} heading from #{currentLocation.name} to #{nextLocation.name} via #{nextRoad.name}"
+        print_route(driver, currentLocation, nextRoad, nextLocation)
 
         currentLocation = nextLocation
 
@@ -69,6 +69,10 @@ class City
     elsif currentLocation.name == "Cathedral"
       driver.add_class
     end
+  end
+
+  def print_route(driver, currentLocation, nextRoad, nextLocation)
+    puts "#{driver.name} heading from #{currentLocation.name} to #{nextLocation.name} via #{nextRoad.name}"
   end
 
 end

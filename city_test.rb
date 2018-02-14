@@ -44,4 +44,18 @@ class CityTest < Minitest::Test
     assert_mock driver
   end
 
+  # UNIT TEST FOR METHOD print_route(driver, currentLocation, nextRoad, nextLocation)
+  # Equivalence classes do not make sense for this test since it is simply making sure that the names of the objects are printed out
+  def test_print_route
+    driver = Minitest::Mock.new("Driver")
+    currentLocation = Minitest::Mock.new("Current Location")
+    nextRoad = Minitest::Mock.new("Next Road")
+    nextLocation = Minitest::Mock.new("Next Location")
+    def driver.name; "Driver 1"; end
+    def currentLocation.name; "Museum"; end
+    def nextRoad.name; "Bar St."; end
+    def nextLocation.name; "Cathedral"; end
+    assert_output("Driver 1 heading from Museum to Cathedral via Bar St.\n") { @c.print_route(driver, currentLocation, nextRoad, nextLocation) }
+  end
+
 end
