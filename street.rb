@@ -8,7 +8,7 @@ class Street
     @location2 = location2
   end
 
-  def toLocation(fromLocation)
+  def to_location(fromLocation)
     if fromLocation == @location1
       @location2
     elsif fromLocation == @location2 # Two-Way Streets

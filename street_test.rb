@@ -14,7 +14,7 @@ class StreetTest < Minitest::Test
     loc1 = Minitest::Mock.new("Location 1")
     loc2 = Minitest::Mock.new("Location 2")
     avenue = Street::new("Foo", loc1, loc2)
-    assert_equal loc2, avenue.toLocation(loc1)
+    assert_equal loc2, avenue.to_location(loc1)
   end
 
   # If location2 is given for input toLocation, location1 is returned
@@ -22,7 +22,7 @@ class StreetTest < Minitest::Test
     loc1 = Minitest::Mock.new("Location 1")
     loc2 = Minitest::Mock.new("Location 2")
     avenue = Street::new("Foo", loc1, loc2)
-    assert_equal loc1, avenue.toLocation(loc2)
+    assert_equal loc1, avenue.to_location(loc2)
   end
 
 end

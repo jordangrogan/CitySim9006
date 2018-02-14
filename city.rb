@@ -45,8 +45,8 @@ class City
 
         add_resource(driver, currentLocation)
 
-        nextRoad = currentLocation.getNextRoad(prng)
-        nextLocation = nextRoad.toLocation(currentLocation)
+        nextRoad = currentLocation.get_next_road(prng)
+        nextLocation = nextRoad.to_location(currentLocation)
 
         print_route(driver, currentLocation, nextRoad, nextLocation)
 

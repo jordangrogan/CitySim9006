@@ -16,7 +16,7 @@ class AvenueTest < Minitest::Test
     loc2 = Minitest::Mock.new("Location 2")
     loc3 = Minitest::Mock.new("Location 3")
     avenue = Avenue::new("Foo", loc1, loc2, loc3)
-    assert_equal loc2, avenue.toLocation(loc1)
+    assert_equal loc2, avenue.to_location(loc1)
   end
 
   # If location2 is given for input toLocation, location3 is returned
@@ -25,7 +25,7 @@ class AvenueTest < Minitest::Test
     loc2 = Minitest::Mock.new("Location 2")
     loc3 = Minitest::Mock.new("Location 3")
     avenue = Avenue::new("Foo", loc1, loc2, loc3)
-    assert_equal loc3, avenue.toLocation(loc2)
+    assert_equal loc3, avenue.to_location(loc2)
   end
 
   # If location3 is given for input toLocation, nil is returned
@@ -34,7 +34,7 @@ class AvenueTest < Minitest::Test
     loc2 = Minitest::Mock.new("Location 2")
     loc3 = Minitest::Mock.new("Location 3")
     avenue = Avenue::new("Foo", loc1, loc2, loc3)
-    assert_nil avenue.toLocation(loc3)
+    assert_nil avenue.to_location(loc3)
   end
 
 end

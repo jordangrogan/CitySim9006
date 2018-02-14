@@ -9,7 +9,7 @@ class Avenue
     @location3 = location3
   end
 
-  def toLocation(fromLocation)
+  def to_location(fromLocation)
     if fromLocation == @location1
       @location2
     elsif fromLocation == @location2
