@@ -44,13 +44,7 @@ class City
 
       until (currentLocation == @monroeville) || (currentLocation == @downtown)
 
-        if currentLocation == @hillman
-          driver.add_book
-        elsif currentLocation == @museum
-          driver.add_dino
-        elsif currentLocation == @cathedral
-          driver.add_class
-        end
+        add_resource(driver, currentLocation)
 
         nextRoad = currentLocation.getNextRoad(prng)
         nextLocation = nextRoad.toLocation(currentLocation)
@@ -65,6 +59,16 @@ class City
 
     end
 
+  end
+
+  def add_resource(driver, currentLocation)
+    if currentLocation.name == "Hillman"
+      driver.add_book
+    elsif currentLocation.name == "Museum"
+      driver.add_dino
+    elsif currentLocation.name == "Cathedral"
+      driver.add_class
+    end
   end
 
 end
