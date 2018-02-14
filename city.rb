@@ -39,7 +39,6 @@ class City
 
     @drivers.each_with_index do |driver, i|
 
-      nextLocation = nil
       currentLocation = @starting_locations.sample(random: prng)
 
       until (currentLocation == @monroeville) || (currentLocation == @downtown)
