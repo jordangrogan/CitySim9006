@@ -12,7 +12,8 @@ class Location
   end
 
   def get_next_road(prng)
-    @roads.sample(random: prng)
+    val = prng.rand(@roads.size)
+    @roads[val]
   end
 
 end

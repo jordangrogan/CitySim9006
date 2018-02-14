@@ -29,14 +29,18 @@ class LocationTest < Minitest::Test
     assert_includes @l.roads, road2
   end
 
-  # UNIT TESTS FOR METHOD get_next_road(prng)
+  # UNIT TESTS FOR METHOD getNextRoad(prng)
   # The parameter is a pseudorandom number generator, so it doesn't make sense for their to be equivalence classes
+  # The pseudorandom number generator's rand function in this unit test is stubbed
   def test_get_next_road
+    prng = Minitest::Mock.new("prng")
     road1 = Minitest::Mock.new("test_road_1")
     road2 = Minitest::Mock.new("test_road_2")
     @l.add_roads(road1, road2)
-    assert_includes [road1, road2], @l.get_next_road(Random.new)
-    # Is it okay to use Random.new in this case??
+    def prng.rand(size); 0; end
+    assert_equal road1, @l.get_next_road(prng)
+    def prng.rand(size); 1; end
+    assert_equal road2, @l.get_next_road(prng)
   end
 
 end
