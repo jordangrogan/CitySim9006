@@ -5,6 +5,8 @@ require_relative "location"
 
 class City
 
+  attr_reader :drivers
+
   def initialize()
 
     # SETUP LOCATIONS & ROADS & DRIVERS
@@ -33,7 +35,7 @@ class City
 
   end
 
-  def run(prng)
+  def run_simulation(prng)
 
     @drivers.each do |driver|
 

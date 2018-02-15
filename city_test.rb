@@ -58,4 +58,18 @@ class CityTest < Minitest::Test
     assert_output("Driver 1 heading from Museum to Cathedral via Bar St.\n") { @c.print_route(driver, current_location, next_road, next_location) }
   end
 
+  # UNIT TEST FOR METHOD add_drivers
+  # There are no parameters, so there are no equivalence classes
+  # This test ensures that upon completion of initialize method, @drivers.size = 5
+  def test_add_drivers
+    assert_equal 5, @c.drivers.size
+  end
+
+  # UNIT TEST FOR METHOD run_simulation(prng)
+  # The only parameter for this is a pseudorandom number generator (which is mocked for this test), so there are no noteworthy equivalence classes
+  def test_run_simulation
+    
+  end
+
+
 end
