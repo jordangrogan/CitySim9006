@@ -29,30 +29,15 @@ class City
     @museum.add_roads(@bar, @fifth)
 
     @drivers = []
-    for i in 0..4 do
-      @drivers[i] = Driver::new("Driver #{i + 1}")
-    end
+    add_drivers
 
   end
 
   def run(prng)
 
-    @drivers.each_with_index do |driver, i|
+    @drivers.each do |driver|
 
-      currentLocation = @starting_locations.sample(random: prng)
-
-      until (currentLocation == @monroeville) || (currentLocation == @downtown)
-
-        add_resource(driver, currentLocation)
-
-        nextRoad = currentLocation.get_next_road(prng)
-        nextLocation = nextRoad.to_location(currentLocation)
-
-        print_route(driver, currentLocation, nextRoad, nextLocation)
-
-        currentLocation = nextLocation
-
-      end
+      traverse_city(prng, driver)
 
       driver.print_results
 
@@ -60,18 +45,44 @@ class City
 
   end
 
-  def add_resource(driver, currentLocation)
-    if currentLocation.name == "Hillman"
+  def add_drivers
+    for i in 0..4 do
+      @drivers[i] = Driver::new("Driver #{i + 1}")
+    end
+  end
+
+  def traverse_city(prng, driver)
+
+    rand_val = prng.rand(@starting_locations.size)
+    current_location = @starting_locations[rand_val]
+
+    until (current_location == @monroeville) || (current_location == @downtown)
+
+      add_resource(driver, current_location)
+
+      next_road = current_location.get_next_road(prng)
+      next_location = next_road.to_location(current_location)
+
+      print_route(driver, current_location, next_road, next_location)
+
+      current_location = next_location
+
+    end
+
+  end
+
+  def add_resource(driver, current_location)
+    if current_location.name == "Hillman"
       driver.add_book
-    elsif currentLocation.name == "Museum"
+    elsif current_location.name == "Museum"
       driver.add_dino
-    elsif currentLocation.name == "Cathedral"
+    elsif current_location.name == "Cathedral"
       driver.add_class
     end
   end
 
-  def print_route(driver, currentLocation, nextRoad, nextLocation)
-    puts "#{driver.name} heading from #{currentLocation.name} to #{nextLocation.name} via #{nextRoad.name}"
+  def print_route(driver, current_location, next_road, next_location)
+    puts "#{driver.name} heading from #{current_location.name} to #{next_location.name} via #{next_road.name}"
   end
 
 end
