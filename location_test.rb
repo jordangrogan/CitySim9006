@@ -10,17 +10,26 @@ class LocationTest < Minitest::Test
 
   # UNIT TESTS FOR METHOD add_roads(*roads)
   # Equivalence classes:
-  # Number of roads = 1
-  # Number of roads > 1
+  # Number of roads < 1 -> return nil
+  # Number of roads = 1 -> add it to @roads && return @roads
+  # Number of roads > 1 -> add them to @roads && return @roads
 
-  # Number of roads = 1
+  # If the number of roads < 1, return nil
+  # EDGE CASE
+  def test_add_roads_less_than_one
+    assert_nil @l.add_roads()
+  end
+
+  # If the number of roads being added = 1, add it to the @roads array && return @roads array
+  # BASE CASE
   def test_add_roads_one
     road1 = Minitest::Mock.new("test_road_1")
     @l.add_roads(road1)
     assert_includes @l.roads, road1
   end
 
-  # Number of roads > 1
+  # If the number of roads being added > 1, add the roads to the @roads array && return @roads array
+  # BASE CASE
   def test_add_roads_more_than_one
     road1 = Minitest::Mock.new("test_road_1")
     road2 = Minitest::Mock.new("test_road_2")
@@ -32,6 +41,7 @@ class LocationTest < Minitest::Test
   # UNIT TESTS FOR METHOD get_next_road(prng)
   # The parameter is a pseudorandom number generator, so it doesn't make sense for their to be equivalence classes
   # The pseudorandom number generator's rand function in this unit test is stubbed
+
   def test_get_next_road
     prng = Minitest::Mock.new("prng")
     road1 = Minitest::Mock.new("test_road_1")

@@ -8,7 +8,7 @@ class Location
   end
 
   def add_roads(*rds)
-    rds.each { |r| @roads << r }
+    rds.each { |r| @roads << r } if rds.size > 0
   end
 
   def get_next_road(prng)
