@@ -11,8 +11,8 @@ class LocationTest < Minitest::Test
   # UNIT TESTS FOR METHOD add_roads(*roads)
   # Equivalence classes:
   # Number of roads < 1 -> return nil
-  # Number of roads = 1 -> add it to @roads && return @roads
-  # Number of roads > 1 -> add them to @roads && return @roads
+  # Number of roads = 1 -> add it to @roads
+  # Number of roads > 1 -> add them to @roads
 
   # If the number of roads < 1, return nil
   # EDGE CASE
@@ -20,7 +20,8 @@ class LocationTest < Minitest::Test
     assert_nil @l.add_roads()
   end
 
-  # If the number of roads being added = 1, add it to the @roads array && return @roads array
+  # If the number of roads being added = 1, add it to the @roads array.
+  # This test ensures that the new road is included in the @roads array (by making a road double).
   # BASE CASE
   def test_add_roads_one
     road1 = Minitest::Mock.new("test_road_1")
@@ -28,7 +29,8 @@ class LocationTest < Minitest::Test
     assert_includes @l.roads, road1
   end
 
-  # If the number of roads being added > 1, add the roads to the @roads array && return @roads array
+  # If the number of roads being added > 1, add the roads to the @roads array.
+  # This test ensures that the new roads are included in the @roads array (by making 2 road doubles).
   # BASE CASE
   def test_add_roads_more_than_one
     road1 = Minitest::Mock.new("test_road_1")
