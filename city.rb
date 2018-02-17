@@ -5,7 +5,7 @@ require_relative "location"
 
 class City
 
-  attr_reader :drivers
+  attr_accessor :drivers
 
   def initialize()
 
@@ -31,7 +31,6 @@ class City
     @museum.add_roads(@fifth, @bar)
 
     @drivers = []
-    add_drivers
 
   end
 
@@ -47,10 +46,8 @@ class City
 
   end
 
-  def add_drivers
-    for i in 0..4 do
-      @drivers[i] = Driver::new("Driver #{i + 1}")
-    end
+  def add_driver(driver)
+    @drivers << driver
   end
 
   def traverse_city(prng, driver)
