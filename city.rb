@@ -18,17 +18,17 @@ class City
     @hillman = Location::new("Hillman")
     @downtown = Location::new("Downtown")
 
-    @starting_locations = [@hospital, @cathedral, @museum, @hillman]
+    @starting_locations = [@hillman, @cathedral, @hospital, @museum]
 
     @foo = Street::new("Foo St.", @hospital, @hillman)
     @bar = Street::new("Bar St.", @cathedral, @museum)
     @fourth = Avenue::new("Fourth Ave.", @hospital, @cathedral, @monroeville)
     @fifth = Avenue::new("Fifth Ave.", @museum, @hillman, @downtown)
 
-    @hospital.add_roads(@foo, @fourth)
-    @cathedral.add_roads(@bar, @fourth)
-    @hillman.add_roads(@foo, @fifth)
-    @museum.add_roads(@bar, @fifth)
+    @hospital.add_roads(@fourth, @foo)
+    @cathedral.add_roads(@fourth, @bar)
+    @hillman.add_roads(@fifth, @foo)
+    @museum.add_roads(@fifth, @bar)
 
     @drivers = []
     add_drivers

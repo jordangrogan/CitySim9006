@@ -28,7 +28,7 @@ class ArgsCheckerTest < Minitest::Test
   # This tests the value 0 (which is also the default if not an integer).
   # BASE CASE
   def test_one_arg_zero
-    arr = [0]
+    arr = ["0"]
     assert_equal 0, @args_checker.check_args(arr)
   end
 
@@ -36,8 +36,8 @@ class ArgsCheckerTest < Minitest::Test
   # This tests the value 1.
   # BASE CASE
   def test_one_arg_one
-    arr = [1]
-    assert_equal 1, @args_checker.check_args(arr)
+    arr = ["8"]
+    assert_equal 8, @args_checker.check_args(arr)
   end
 
   # If two or more arguments were provided, then an exception is raised.
@@ -45,7 +45,7 @@ class ArgsCheckerTest < Minitest::Test
   # EDGE CASE
   def test_two_args
     assert_raises "Enter a seed and only a seed" do
-      arr = [0,1]
+      arr = ["0","1"]
       @args_checker.check_args(arr)
     end
   end
@@ -54,7 +54,7 @@ class ArgsCheckerTest < Minitest::Test
   # This tests three arguments.
   def test_three_args
     assert_raises "Enter a seed and only a seed" do
-      arr = [0,1,2]
+      arr = ["0","1","2"]
       @args_checker.check_args(arr)
     end
   end
