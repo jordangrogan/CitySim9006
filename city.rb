@@ -46,10 +46,6 @@ class City
 
   end
 
-  def add_driver(driver)
-    @drivers << driver
-  end
-
   def traverse_city(prng, driver)
 
     rand_val = prng.rand(@starting_locations.size)
@@ -68,6 +64,10 @@ class City
 
     end
 
+  end
+
+  def add_driver(driver)
+    @drivers << driver
   end
 
   def add_resource(driver, current_location)
