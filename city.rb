@@ -35,19 +35,13 @@ class City
   end
 
   def run_simulation(prng)
-
     @drivers.each do |driver|
-
       traverse_city(prng, driver)
-
       driver.print_results
-
     end
-
   end
 
   def traverse_city(prng, driver)
-
     rand_val = prng.rand(@starting_locations.size)
     current_location = @starting_locations[rand_val]
 
@@ -63,7 +57,6 @@ class City
       current_location = next_location
 
     end
-
   end
 
   def add_driver(driver)
