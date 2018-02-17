@@ -6,9 +6,9 @@ class AvenueTest < Minitest::Test
 
   # UNIT TESTS FOR METHOD to_location(from_location)
   # Equivalence classes:
-  # toLocation = location1 -> returns location2
-  # toLocation = location2 -> returns location3
-  # toLocation = location3 -> returns nil
+  # from_location = location1 -> returns location2
+  # from_location = location2 -> returns location3
+  # from_location = location3 -> returns nil
 
   # If location1 is given for input to_location, location2 is returned.
   # loc1, loc2, & loc3 are doubles for Location objects.
