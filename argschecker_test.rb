@@ -36,8 +36,8 @@ class ArgsCheckerTest < Minitest::Test
   # This tests the value 1.
   # BASE CASE
   def test_one_arg_one
-    arr = ["8"]
-    assert_equal 8, @args_checker.check_args(arr)
+    arr = ["1"]
+    assert_equal 1, @args_checker.check_args(arr)
   end
 
   # If two or more arguments were provided, then an exception is raised.
@@ -60,6 +60,7 @@ class ArgsCheckerTest < Minitest::Test
   end
 
   # If one non-integer argument was provided, then 0 is returned.
+  # This tests the string value "AString".
   def test_args_not_an_integer
     arr = ["AString"]
     assert_equal 0, @args_checker.check_args(arr)
