@@ -15,10 +15,10 @@ class Avenue
     @location3 = location3
   end
 
-  def to_location(fromLocation)
-    if fromLocation == @location1
+  def to_location(from_location)
+    if from_location == @location1
       @location2
-    elsif fromLocation == @location2
+    elsif from_location == @location2
       @location3
     end
   end
