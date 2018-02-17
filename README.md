@@ -4,3 +4,7 @@ CS 1632 - DELIVERABLE 2: Unit Testing CitySim9006
 
 Jordan Grogan  
 Mon/Wed 11am
+
+Run the program with `ruby city_sim_9006.rb [seed]`
+
+Run the unit tests with `for file in *_test.rb; do ruby $file; done`  
